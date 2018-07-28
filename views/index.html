@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+.class1{
+	background: #444;
+	color: #eee;
+}
+</style>
+<body>
+
+<div id="app">
+	<label for="login">请输入用户名：</label>
+	<input type="text" :id="vid" placeholder="用户名或者是邮箱">
+	<label for="password">请输入密码：</label>
+	<input type="password" :id="pid" placeholder="请输入你的密码">
+	<button @click="sendGetByStr()">登录</button>
+</div>
+	<script type="text/javascript" src="js/vue.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/axios.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery-1.7.2.min.js" charset="utf-8"></script>
+	
+	<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			vid:"login",
+			pid:"password"
+		},
+		methods:{
+			sendGetByStr(){
+				console.log($("#login").val())
+				var name = $("#login").val();
+				var password = $('#password').val();
+
+				$.get('/login',{
+					name:name,
+					password:password
+				},function(data){
+					console.log(data)
+				})
+			}
+		}
+	})
+	</script>
+	
+</body>
+</html>
